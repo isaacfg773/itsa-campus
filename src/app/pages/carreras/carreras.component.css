@@ -1,0 +1,67 @@
+.page-title{ color:var(--brand); text-align:center; margin-bottom:6px }
+.center{ text-align:center }
+
+/* Toolbar: búsqueda + chips */
+.toolbar{
+  display:grid; gap:12px; margin:24px 0;
+  grid-template-columns: 1fr auto;
+  align-items:center;
+}
+@media (max-width: 860px){ .toolbar{ grid-template-columns: 1fr } }
+
+.input{
+  width:100%; padding:12px 14px; border-radius:12px;
+  border:1px solid var(--line); background:rgba(255,255,255,.03);
+  color:var(--text); outline:none;
+}
+.input::placeholder{ color:rgba(255,255,255,.5) }
+
+.chips{ display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end }
+.chip{
+  background:rgba(255,255,255,.04); border:1px solid var(--line);
+  color:var(--text); padding:8px 12px; border-radius:999px; cursor:pointer;
+}
+.chip.active{ background:var(--brand); color:#001b0f; border-color:transparent }
+
+/* Grid de tarjetas */
+.grid{
+  display:grid; gap:20px; margin-top:8px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+/* Card */
+.carrera{
+  background:rgba(255,255,255,.03);
+  border:1px solid var(--line);
+  border-radius:16px; overflow:hidden;
+  display:flex; flex-direction:column;
+}
+.thumb{
+  position:relative; aspect-ratio: 16/9;
+  background-size: cover; background-position:center;
+}
+.thumb::after{
+  content:""; position:absolute; inset:0;
+  background: radial-gradient(ellipse at 30% 20%, rgba(20,154,76,.18), transparent 60%);
+}
+.badge{
+  position:absolute; left:12px; bottom:12px;
+  background:rgba(0,0,0,.65); color:#fff; padding:6px 10px;
+  border-radius:999px; font-size:12px; border:1px solid rgba(255,255,255,.15);
+}
+
+.body{ padding:16px }
+.title{ margin:0 0 6px 0; color:#fff }
+.desc{ color:var(--muted); margin:0 0 10px 0; min-height:42px }
+.meta{ display:flex; gap:8px; flex-wrap:wrap; margin-bottom:10px }
+.pill{
+  border:1px solid var(--line);
+  border-radius:999px; padding:6px 10px;
+  color:var(--muted); font-size:12px;
+}
+.pill--green{ color:#031; border-color:transparent; background:var(--brand) }
+
+.actions{ display:flex; gap:10px; margin-top:6px; flex-wrap:wrap }
+
+/* Vacío */
+.empty{ margin-top:18px; padding:18px; text-align:center; border-radius:14px }

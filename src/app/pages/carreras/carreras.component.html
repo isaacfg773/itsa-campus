@@ -1,0 +1,54 @@
+<section class="section">
+  <div class="container">
+    <h1 class="page-title">Oferta Académica</h1>
+    <p class="lead center">
+      Programas técnicos con alta empleabilidad, práctica real y convenios.
+    </p>
+
+    <!-- Controles -->
+    <div class="toolbar">
+      <input
+        type="search"
+        [(ngModel)]="q"
+        class="input"
+        placeholder="Buscar carrera (ej. Sistemas, Administración, Topografía)…" />
+
+      <div class="chips">
+        <button class="chip" [class.active]="filtroTurno==='Todos'" (click)="setTurno('Todos')">Todos</button>
+        <button class="chip" [class.active]="filtroTurno==='Mañana'" (click)="setTurno('Mañana')">Mañana</button>
+        <button class="chip" [class.active]="filtroTurno==='Noche'" (click)="setTurno('Noche')">Noche</button>
+      </div>
+    </div>
+
+    <!-- Grid de carreras -->
+    <div class="grid">
+      <article class="card carrera" *ngFor="let c of listaFiltrada">
+        <!-- 👇 Usamos ngStyle para evitar comillas rotas -->
+        <div class="thumb" [ngStyle]="{'background-image': 'url(' + (c.imagen || '/carreras/default.jpg') + ')'}">
+          <span class="badge">{{ c.duracion }}</span>
+        </div>
+
+        <div class="body">
+          <h3 class="title">{{ c.titulo }}</h3>
+          <p class="desc">{{ c.desc }}</p>
+
+          <div class="meta">
+            <span class="pill" [class.pill--green]="c.turno==='Mañana'">Turno: {{ c.turno }}</span>
+          </div>
+
+          <div class="actions">
+            <a class="btn btn--outline" [routerLink]="['/carrera', c.slug]">Ver malla</a>
+            <a class="btn btn--green" href="https://api.whatsapp.com/send?phone=59176433612" target="_blank" rel="noopener">
+              Inscribirme
+            </a>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <!-- vacío -->
+    <div *ngIf="!listaFiltrada.length" class="empty panel">
+      <p>Sin resultados para “{{ q }}”. Prueba otra palabra o quita filtros.</p>
+    </div>
+  </div>
+</section>

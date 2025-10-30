@@ -1,0 +1,127 @@
+<!-- NAVBAR -->
+<header class="topbar">
+  <div class="container topbar__grid">
+    <!-- LOGO -->
+    <a routerLink="/" class="topbar__logo" aria-label="ITSA">
+      <img src="/logo.png" alt="ITSA">
+    </a>
+
+    <!-- MENÚ CENTRAL -->
+    <nav class="topbar__menu" aria-label="Principal">
+      <a routerLink="/nosotros">Nosotros</a>
+      <a routerLink="/directores">Directores</a>
+      <a routerLink="/oferta">Carreras</a>
+      <a routerLink="/eventos">Eventos</a>
+      <a routerLink="/contacto">Contacto</a>
+      <a routerLink="/acerca-de">Acerca de</a>
+    </nav>
+
+    <!-- LOGIN -->
+    <a routerLink="/login" class="btn btn--login">LOGIN</a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container hero__grid">
+    <div>
+      <h1 class="hero__title">
+        Instituto Tecnológico
+        <span class="outline" style="display:block">SACABA</span>
+        <span class="btn btn--green" style="border-radius:10px;padding:6px 12px;margin-top:8px">WORKSHOP</span>
+      </h1>
+
+      <p class="hero__desc">
+        Educación Técnica de calidad con enfoque práctico, convenios y sedes a nivel nacional.
+      </p>
+
+      <div style="margin-top:24px;display:flex;gap:12px;flex-wrap:wrap">
+        <a class="btn btn--green" routerLink="/oferta">ver Carreras</a>
+        <a class="btn btn--outline" routerLink="/contacto">Habla con un Agente.</a>
+      </div>
+    </div>
+
+    <!-- Imagen circular con doble aro -->
+    <div class="hero__img-wrap circle-photo">
+      <div class="hero__glow"></div>
+      <img class="circle-photo__img" src="/itsa-alumnos.png" alt="Alumnos ITSA" />
+    </div>
+  </div>
+</section>
+
+<!-- CARRERAS DESTACADAS -->
+<section class="section">
+  <div class="container">
+    <h2 style="color:var(--brand)">Carreras destacadas</h2>
+    <p class="lead">Programas con alta empleabilidad y práctica real.</p>
+    <div class="grid-3">
+      <div class="card">
+        <h3>Administración de Empresas</h3>
+        <p class="lead">Gestión, finanzas y marketing.</p>
+      </div>
+      <div class="card">
+        <h3>Topografía y Geodesia</h3>
+        <p class="lead">Medición, SIG y obras civiles.</p>
+      </div>
+      <div class="card">
+        <h3>Sistemas Informáticos</h3>
+        <p class="lead">Desarrollo y redes.</p>
+      </div>
+    </div>
+    <div style="margin-top:16px">
+      <a class="btn btn--green" routerLink="/oferta">Ver toda la oferta</a>
+    </div>
+  </div>
+</section>
+
+<!-- BENEFICIOS -->
+<section class="section">
+  <div class="container">
+    <h2 style="color:var(--brand)">¿Por qué estudiar con nosotros?</h2>
+    <div class="grid-3">
+      <div class="card">
+        <h3>Formación técnica</h3>
+        <p class="lead">Docentes expertos y programas actualizados.</p>
+      </div>
+      <div class="card">
+        <h3>Convenios empresariales</h3>
+        <p class="lead">Prácticas y oportunidades laborales reales.</p>
+      </div>
+      <div class="card">
+        <h3>Certificación reconocida</h3>
+        <p class="lead">Títulos con validez nacional e internacional.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NOTICIAS -->
+<section class="section panel">
+  <div class="container">
+    <h2 style="color:var(--brand)">Noticias recientes</h2>
+    <div class="grid-3">
+      <article class="card">
+        <h3>Feria de carreras</h3>
+        <p class="lead">Conoce nuestras mallas y docentes.</p>
+      </article>
+      <article class="card">
+        <h3>Inscripciones abiertas</h3>
+        <p class="lead">Cupos limitados por sede.</p>
+      </article>
+      <article class="card">
+        <h3>Nuevo convenio</h3>
+        <p class="lead">Prácticas garantizadas.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="section">
+  <div class="container">
+    <h2 style="color:var(--brand)">Contáctanos</h2>
+    <p class="lead">📍 Calle Sucre N.º 468 entre Jordán y Calama, Cochabamba, Bolivia.</p>
+    <p class="lead">📞 4-4256035 | 📧 info@itsa.edu.bo</p>
+    <a class="btn btn--green" href="https://api.whatsapp.com/send?phone=59176433612" target="_blank" rel="noopener">WhatsApp</a>
+  </div>
+</section>
