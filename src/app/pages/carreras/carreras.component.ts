@@ -34,7 +34,7 @@ export class CarrerasComponent {
       desc: 'Gestión estratégica, finanzas, marketing y emprendimiento.',
       duracion: '3 años (6 semestres)',
       turno: 'Ambos',
-      imagen: '/carreras/adm.jpg'
+      imagen: 'assets/carreras/adm.jpg'
     },
     {
       slug: 'topografia-y-geodesia',
@@ -42,7 +42,7 @@ export class CarrerasComponent {
       desc: 'Levantamientos, SIG, obras civiles y georreferenciación.',
       duracion: '3 años (6 semestres)',
       turno: 'Mañana',
-      imagen: '/carreras/topografia.jpg'
+      imagen: 'assets/carreras/topografia.jpg'
     },
     {
       slug: 'sistemas-informaticos',
@@ -50,7 +50,7 @@ export class CarrerasComponent {
       desc: 'Desarrollo de software, redes, bases de datos y DevOps.',
       duracion: '3 años (6 semestres)',
       turno: 'Ambos',
-      imagen: '/carreras/sistemas.jpg'
+      imagen: 'assets/carreras/sistemas.jpg'
     },
     {
       slug: 'construccion-civil',
@@ -58,7 +58,7 @@ export class CarrerasComponent {
       desc: 'Ejecución de obras, metrados, presupuestos y seguridad.',
       duracion: '3 años (6 semestres)',
       turno: 'Noche',
-      imagen: '/carreras/construccion.jpg'
+      imagen: 'assets/carreras/construccion.jpg'
     },
     {
       slug: 'contaduria',
@@ -66,7 +66,7 @@ export class CarrerasComponent {
       desc: 'Contabilidad general, tributación, auditoría y costos.',
       duracion: '3 años (6 semestres)',
       turno: 'Mañana',
-      imagen: '/carreras/contaduria.jpg'
+      imagen: 'assets/carreras/contaduria.jpg'
     },
     {
       slug: 'electronica',
@@ -74,7 +74,7 @@ export class CarrerasComponent {
       desc: 'Circuitos, instrumentación, mantenimiento y automatización.',
       duracion: '3 años (6 semestres)',
       turno: 'Noche',
-      imagen: '/carreras/electronica.jpg'
+      imagen: 'assets/carreras/electronica.jpg'
     },
   ];
 

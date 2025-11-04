@@ -1,0 +1,142 @@
+<section class="eventos">
+  <div class="container">
+
+    <!-- HERO -->
+    <header class="header">
+      <h1>Eventos y Actividades</h1>
+      <p class="lead">
+        Toda la agenda institucional: ferias, defensas, convenios, talleres, actividades
+        culturales y deportivas. Filtra por categoría, mes o año.
+      </p>
+    </header>
+
+    <!-- CONTROLES -->
+    <div class="toolbar">
+      <input
+        class="search"
+        type="search"
+        placeholder="Buscar evento, lugar o palabra clave..."
+        [ngModel]="q()"
+        (ngModelChange)="setQ($event); resetPage()"
+      />
+
+      <div class="chips">
+        <button
+          class="chip"
+          [class.active]="cat() === 'Todos'"
+          (click)="setCat('Todos')">Todos</button>
+
+        <button
+          class="chip"
+          *ngFor="let c of categorias"
+          [class.active]="cat() === c"
+          (click)="setCat(c)">{{ c }}</button>
+      </div>
+
+      <div class="selects">
+        <!-- Mes -->
+        <select [ngModel]="mes()" (ngModelChange)="setMes($event)">
+          <option [ngValue]="''">Todos los meses</option>
+          <option *ngFor="let i of [1,2,3,4,5,6,7,8,9,10,11,12]" [ngValue]="i">
+            {{ monthLabel(i) }}
+          </option>
+        </select>
+
+        <!-- Año -->
+        <select [ngModel]="anio()" (ngModelChange)="setAnio($event)">
+          <option [ngValue]="''">Todos los años</option>
+          <option *ngFor="let y of aniosDisponibles()" [ngValue]="y">{{ y }}</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- LAYOUT: LISTA + ASIDE -->
+    <div class="layout">
+
+      <!-- GRID DE EVENTOS -->
+      <div class="grid">
+
+        <article class="card" *ngFor="let e of paginados()">
+          <div class="thumb">
+            <div class="bg" [style.backgroundImage]="'url('+ e.imagen +')'"></div>
+            <div class="badge">
+              <span>{{ e.fechaISO | date:'dd MMM' | uppercase }}</span>
+            </div>
+          </div>
+
+          <div class="body">
+            <div class="pill">{{ e.categoria }}</div>
+            <h2>{{ e.titulo }}</h2>
+            <p class="desc">{{ e.descripcion }}</p>
+
+            <div class="meta">
+              <span class="lugar">{{ e.lugar }}</span>
+              <span class="fecha">{{ e.fechaISO | date:'fullDate' }}</span>
+            </div>
+
+            <div class="actions">
+              <a class="btn btn--green" [href]="e.enlace || '#'" target="_blank" rel="noopener">Ver más</a>
+              <button class="btn btn--outline" (click)="openGaleria(e.galeria)">Galería</button>
+            </div>
+          </div>
+        </article>
+
+        <!-- EMPTY STATE -->
+        <div class="empty" *ngIf="!paginados().length">
+          <p>No se encontraron eventos con los filtros aplicados.</p>
+        </div>
+
+        <!-- PAGINACIÓN -->
+        <div class="pagination" *ngIf="filtrados().length > pageSize()">
+          <button class="pager" [disabled]="page()===1" (click)="page.set(page()-1)">&larr;</button>
+          <span>Página {{ page() }} / {{ totalPages() }}</span>
+          <button class="pager" [disabled]="page()===totalPages()" (click)="page.set(page()+1)">&rarr;</button>
+        </div>
+
+      </div>
+
+      <!-- ASIDE: PRÓXIMOS -->
+      <aside class="aside">
+        <h3 class="aside__title">Próximos eventos</h3>
+        <div class="aside__list">
+          <a class="mini" *ngFor="let p of proximos()">
+            <img [src]="p.imagen" [alt]="p.titulo" />
+            <div>
+              <strong>{{ p.titulo }}</strong>
+              <div class="mini__meta">{{ p.fechaISO | date:'dd MMM yyyy' }} • {{ p.lugar }}</div>
+            </div>
+          </a>
+        </div>
+
+        <!-- FAQ -->
+        <div class="faq">
+          <h3 class="aside__title">Preguntas frecuentes</h3>
+          <details>
+            <summary>¿Cómo me inscribo a un taller?</summary>
+            <p>Ingresa al evento y presiona el botón “Ver más / Inscribirme”. Si no hay formulario, escribe a WhatsApp institucional.</p>
+          </details>
+          <details>
+            <summary>¿Los eventos tienen costo?</summary>
+            <p>Las ferias y defensas son gratuitas. Algunos talleres especializados pueden tener un costo simbólico por materiales.</p>
+          </details>
+          <details>
+            <summary>¿Puedo asistir aunque no sea estudiante?</summary>
+            <p>Muchos eventos son abiertos al público. Revisa la descripción de cada evento.</p>
+          </details>
+        </div>
+      </aside>
+
+    </div>
+
+  </div>
+
+  <!-- MODAL GALERÍA -->
+  <div class="modal" *ngIf="modalOpen()" (click)="closeModal()">
+    <div class="modal__inner" (click)="$event.stopPropagation()">
+      <button class="modal__close" (click)="closeModal()">✕</button>
+      <div class="modal__gallery">
+        <img *ngFor="let src of modalImgs()" [src]="src" alt="Foto de evento" loading="lazy">
+      </div>
+    </div>
+  </div>
+</section>
