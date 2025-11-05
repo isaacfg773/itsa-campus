@@ -5,6 +5,7 @@ import { CarrerasComponent } from './pages/carreras/carreras.component';
 import { CarreraDetalleComponent } from './pages/carrera-detalle/carrera-detalle.component';
 import { DirectoresComponent } from './pages/directores/directores.component';
 import { EventosComponent } from './pages/eventos/eventos.component';
+import { AgenteComponent } from './pages/agente/agente.component';
 
 import { NoticiasComponent } from './pages/noticias/noticias.component';
 import { NosotrosComponent } from './pages/nosotros/nosotros.component';
@@ -21,5 +22,6 @@ export const routes: Routes = [
   { path: 'eventos', component: EventosComponent },
   { path: 'contacto', component: ContactoComponent },
   { path: 'login', component: LoginComponent },
+ { path: 'agente', component: AgenteComponent },       // 👈 nuevo
   { path: '**', redirectTo: '' },
 ];

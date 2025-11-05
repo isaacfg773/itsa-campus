@@ -291,3 +291,31 @@
     text-align:center;
   }
 }
+.grid-4 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
+}
+
+.carrera {
+  overflow: hidden;
+  border-radius: 14px;
+  background: #111;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.carrera img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-bottom: 2px solid var(--brand);
+}
+
+.carrera .info {
+  padding: 12px 16px;
+}
+
+.carrera:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}

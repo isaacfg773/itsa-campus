@@ -1,0 +1,104 @@
+<section class="agente">
+  <div class="container">
+
+    <!-- Encabezado -->
+    <header class="head">
+      <div class="head__left">
+        <h1>Agente ITSA</h1>
+        <p class="lead">Atención inteligente para admisión, carreras, requisitos, horarios y más.</p>
+        <div class="status">
+          <span class="dot"></span> Online • tiempo de respuesta ~1 min
+        </div>
+      </div>
+      <div class="head__right">
+        <a routerLink="/" class="back">← Volver</a>
+      </div>
+    </header>
+
+    <!-- Chips (atajos de preguntas) -->
+    <div class="chips">
+      <button class="chip" (click)="quickAsk('Requisitos de admisión 2025')">Requisitos 2025</button>
+      <button class="chip" (click)="quickAsk('Proceso de inscripción paso a paso')">Proceso de inscripción</button>
+      <button class="chip" (click)="quickAsk('Carreras disponibles y duración')">Oferta académica</button>
+      <button class="chip" (click)="quickAsk('Dónde pago y qué documentos llevo')">Pagos y documentos</button>
+      <button class="chip" (click)="quickAsk('Sedes y horarios de atención')">Sedes y horarios</button>
+    </div>
+
+    <!-- Layout -->
+    <div class="chat">
+      <!-- Sidebar -->
+      <aside class="aside">
+        <div class="card">
+          <h3>Accesos rápidos</h3>
+          <ul class="links">
+            <li><a href="https://itsa.edu.bo/2025/01/15/proceso-de-admision-nuevo-2025/"
+                   target="_blank" rel="noopener">Proceso de Admisión 2025</a></li>
+            <li><a href="https://orion.itsa.edu.bo/postulantes/registrarPostulante.xhtml"
+                   target="_blank" rel="noopener">Formulario de Admisión (ORION)</a></li>
+            <li><a routerLink="/oferta">Oferta de Carreras</a></li>
+            <li><a routerLink="/contacto">Contacto y WhatsApp</a></li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3>Horarios de atención</h3>
+          <p>Lun–Vie • 08:00–12:00 / 14:00–18:00</p>
+          <p>📞 67598222</p>
+        </div>
+
+        <div class="card">
+          <h3>Preguntas frecuentes</h3>
+          <details>
+            <summary>¿Cómo me inscribo?</summary>
+            <p>Completa el formulario ORION y adjunta tus documentos. Luego presenta tu voucher de pago.</p>
+          </details>
+          <details>
+            <summary>¿Cuáles son los requisitos?</summary>
+            <p>CI, título de bachiller, certificado de notas y foto 3x3. Verifica en el Proceso de Admisión 2025.</p>
+          </details>
+          <details>
+            <summary>¿Las carreras son semestrales?</summary>
+            <p>Sí. Revisa la malla y duración en la página de cada carrera.</p>
+          </details>
+        </div>
+      </aside>
+
+      <!-- Chat principal -->
+      <main class="panel">
+        <div class="messages">
+          <div *ngFor="let m of messages()" class="row" [class.me]="m.from==='user'">
+            <div class="bubble" [class.user]="m.from==='user'">
+              <div class="from">{{ m.from==='user' ? 'Tú' : 'Agente ITSA' }}</div>
+              <div class="text" [innerText]="m.text"></div>
+              <!-- Adjuntos (cuando conectemos n8n) -->
+              <div class="atts" *ngIf="m.attachments?.length">
+                <ng-container *ngFor="let a of m.attachments">
+                  <a *ngIf="a.type==='link'" [href]="a.url" target="_blank">{{ a.label || a.url }}</a>
+                  <img *ngIf="a.type==='image'" [src]="a.url" [alt]="a.label || 'Imagen'" />
+                </ng-container>
+              </div>
+            </div>
+          </div>
+          <div class="typing" *ngIf="busy()"><span></span><span></span><span></span></div>
+        </div>
+
+        <footer class="composer">
+          <input
+  type="text"
+  [ngModel]="input()"
+  (ngModelChange)="input.set($event)"
+  (keyup.enter)="send()"
+  placeholder="Escribe tu consulta… (Ej: requisitos para inscripción)"
+/>
+
+          <button (click)="send()" [disabled]="busy()">Enviar</button>
+        </footer>
+
+        <div class="legal">
+          Al usar este asistente aceptas recibir enlaces a recursos oficiales de ITSA. No compartas datos sensibles.
+        </div>
+      </main>
+    </div>
+
+  </div>
+</section>

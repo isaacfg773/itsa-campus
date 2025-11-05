@@ -1,0 +1,36 @@
+<!-- contenedor fijo en esquina -->
+<div class="cb-wrap">
+
+  <!-- FAB -->
+  <button class="cb-fab" (click)="toggle()" aria-label="Abrir chat">
+  <img src="assets/chatbot/call-center.png" alt="Agente ITSA" class="cb-avatar" />
+</button>
+
+
+  <!-- Ventana -->
+  <section class="cb-window" *ngIf="open()">
+    <header class="cb-header">
+      <div>
+        <strong>Agente ITSA</strong>
+        <small>En línea</small>
+      </div>
+      <button class="cb-close" (click)="toggle()">✕</button>
+    </header>
+
+    <div class="cb-body">
+      <div *ngFor="let m of messages()" class="msg" [class.me]="m.from==='user'">
+        <div class="bubble">{{ m.text }}</div>
+      </div>
+      <div class="typing" *ngIf="busy()"><span></span><span></span><span></span></div>
+    </div>
+
+    <footer class="cb-composer">
+      <input type="text"
+             [disabled]="busy()"
+             [(ngModel)]="input"
+             (keyup.enter)="send()"
+             placeholder="Escribe tu consulta…" />
+      <button (click)="send()" [disabled]="busy()">Enviar</button>
+    </footer>
+  </section>
+</div>
