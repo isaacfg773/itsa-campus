@@ -29,7 +29,7 @@ export class NosotrosComponent {
   // Cifras/estadísticas destacadas (si las tienes)
   stats: Stat[] = [
     { label: 'Años de trayectoria', value: '10+' },
-    { label: 'Carreras', value: '6' },
+    { label: 'Carreras', value: '9' },
     { label: 'Sedes', value: 'Sacaba' },
     { label: 'Convenios', value: '30+' },
   ];

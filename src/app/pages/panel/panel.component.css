@@ -1,0 +1,296 @@
+/* ======== PANEL GENERAL ======== */
+.panel-wrap {
+  padding: 40px 0;
+  background: #0d0d0d;
+  color: #f5f5f5;
+  min-height: 100vh;
+  font-family: 'Inter', sans-serif;
+}
+
+.container.panel-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 32px;
+}
+
+@media (max-width: 900px) {
+  .container.panel-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ======== LEFT ======== */
+.left {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* ======== NAV TABS ======== */
+.tiles {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 12px;
+}
+
+.tile {
+  background: #151515;
+  border: 1px solid #333;
+  border-radius: 10px;
+  padding: 14px 10px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: all 0.2s ease;
+}
+
+.tile__icon {
+  font-size: 26px;
+  margin-bottom: 8px;
+}
+
+.tile__text {
+  font-weight: 600;
+  color: #ddd;
+}
+
+.tile:hover {
+  background: #1a1a1a;
+  border-color: #16a34a;
+}
+
+.tile.active {
+  background: #16a34a;
+  border-color: #16a34a;
+}
+
+.tile.active .tile__text {
+  color: #fff;
+}
+
+/* ======== ACTIONS ======== */
+.actions-row {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* ======== BOTONES ======== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  padding: 8px 18px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+/* BOTÓN BLANCO (ahora visible) */
+.btn--white {
+  background: #ffffff;
+  border: 1px solid #16a34a;
+  color: #0d0d0d;
+  box-shadow: 0 0 5px rgba(22, 163, 74, 0.4);
+}
+
+.btn--white:hover {
+  background: #16a34a;
+  color: #fff;
+  border-color: #16a34a;
+}
+
+/* BOTÓN VERDE */
+.btn--green {
+  background: #16a34a;
+  color: #fff;
+  border: none;
+}
+
+.btn--green:hover {
+  background: #13913f;
+}
+
+/* BOTÓN GHOST (transparente) */
+.btn--ghost {
+  background: transparent;
+  border: 1px solid #555;
+  color: #bbb;
+}
+
+.btn--ghost:hover {
+  border-color: #16a34a;
+  color: #16a34a;
+}
+
+/* ======== CARD ======== */
+.card {
+  background: #111;
+  border-radius: 12px;
+  border: 1px solid #222;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  padding: 20px;
+}
+
+.card__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #222;
+  padding-bottom: 8px;
+  margin-bottom: 16px;
+}
+
+/* ======== TABLE ======== */
+.table {
+  width: 100%;
+}
+
+.tr {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  padding: 10px 0;
+  border-bottom: 1px solid #222;
+}
+
+.tr.thead {
+  font-weight: bold;
+  background: #151515;
+}
+
+.td {
+  padding: 5px 0;
+  color: #ccc;
+}
+
+.td--right {
+  text-align: right;
+}
+
+/* ======== FORM ======== */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.label {
+  font-size: 14px;
+  color: #aaa;
+  font-weight: 500;
+}
+
+.input {
+  background: #151515;
+  border: 1px solid #333;
+  border-radius: 6px;
+  padding: 8px 12px;
+  color: #eee;
+  outline: none;
+  transition: border 0.2s ease;
+}
+
+.input:focus {
+  border-color: #16a34a;
+}
+
+.form__actions {
+  text-align: right;
+  margin-top: 10px;
+}
+
+/* ======== RIGHT (AGENTE) ======== */
+.right {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.agent {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.agent__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.agent__avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: contain;
+  background: #16a34a15;
+}
+
+.agent__cta {
+  display: flex;
+  justify-content: center;
+}
+
+.muted {
+  font-size: 14px;
+  color: #aaa;
+}
+
+.divider {
+  height: 1px;
+  background: #222;
+  margin: 8px 0;
+}
+
+/* ======== SWITCH ======== */
+.switch {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #151515;
+  border-radius: 6px;
+  padding: 8px 12px;
+  margin: 6px 0;
+  border: 1px solid #222;
+}
+
+.switch input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  accent-color: #16a34a;
+}
+
+.switch span {
+  font-size: 14px;
+  color: #ccc;
+}
+
+/* ======== RESPONSIVE ======== */
+@media (max-width: 700px) {
+  .tiles {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .tile {
+    padding: 10px;
+  }
+
+  .tr {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .agent__head {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .agent__avatar {
+    width: 56px;
+    height: 56px;
+  }
+}

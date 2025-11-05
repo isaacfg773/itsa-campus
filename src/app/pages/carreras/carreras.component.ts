@@ -111,8 +111,8 @@ export class CarrerasComponent {
       malla:  'assets/mallas/contaduria.jpg'
     },
     {
-      slug: 'electronica',
-      titulo: 'Electrónica',
+      slug: 'informatica-industrialMalla',
+      titulo: 'informatica-industrialMalla',
       desc: 'Circuitos, instrumentación, mantenimiento y automatización.',
       duracion: '3 años (6 semestres)',
       turno: 'Noche',

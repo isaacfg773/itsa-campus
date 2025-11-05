@@ -1,0 +1,144 @@
+<section class="panel-wrap">
+  <div class="container panel-grid">
+    <!-- ============== LEFT: CONTENIDOS ============== -->
+    <div class="left">
+
+      <!-- NAV TABS (icon tiles) -->
+      <nav class="tiles">
+        <button
+          class="tile"
+          [class.active]="tab()==='carreras'"
+          (click)="setTab('carreras')">
+          <span class="tile__icon">🎓</span>
+          <span class="tile__text">Carreras</span>
+        </button>
+
+        <button
+          class="tile"
+          [class.active]="tab()==='noticias'"
+          (click)="setTab('noticias')">
+          <span class="tile__icon">📰</span>
+          <span class="tile__text">Noticias</span>
+        </button>
+
+        <button
+          class="tile"
+          [class.active]="tab()==='eventos'"
+          (click)="setTab('eventos')">
+          <span class="tile__icon">📅</span>
+          <span class="tile__text">Eventos</span>
+        </button>
+
+        <button
+          class="tile"
+          [class.active]="tab()==='docentes'"
+          (click)="setTab('docentes')">
+          <span class="tile__icon">🗂️</span>
+          <span class="tile__text">Docentes</span>
+        </button>
+      </nav>
+
+      <!-- ACTIONS -->
+      <div class="actions-row">
+        <button class="btn btn--white" (click)="nuevo()">Nuevo</button>
+        <button class="btn btn--white" (click)="publicar()">Publicar</button>
+      </div>
+
+      <!-- LISTADO -->
+      <section class="card">
+        <header class="card__head">
+          <h3>Listado – {{ tab() | titlecase }}</h3>
+        </header>
+
+        <div class="table">
+          <div class="tr thead">
+            <div class="th">Título</div>
+            <div class="th">Fecha</div>
+            <div class="th"></div>
+          </div>
+
+          <div class="tr" *ngFor="let it of items[tab()]; index as i">
+            <div class="td">{{ it.titulo }}</div>
+            <div class="td">{{ it.fecha }}</div>
+            <div class="td td--right">
+              <button class="btn btn--ghost" (click)="editar(i)">Editar</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FICHA RÁPIDA -->
+      <section class="card">
+        <header class="card__head">
+          <h3>Ficha rápida</h3>
+        </header>
+
+        <div class="form">
+          <label class="label">Título</label>
+          <input
+            class="input"
+            type="text"
+            [(ngModel)]="form.titulo"
+            placeholder="Ej: Malla de Sistemas 2025" />
+
+          <label class="label">Fecha</label>
+          <input
+            class="input"
+            type="date"
+            [(ngModel)]="form.fecha" />
+
+          <div class="form__actions">
+            <button class="btn btn--green" (click)="publicar()">Guardar / Publicar</button>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- ============== RIGHT: AGENTE ============== -->
+   <!-- ============== RIGHT: AGENTE ============== -->
+    <aside class="right">
+      <div class="agent card">
+        <header class="agent__head">
+          <div>
+            <h3>AGENTE INTELIGENTE</h3>
+            <p class="muted">Hola, soy tu asistente ITSA 🤖</p>
+          </div>
+          <img src="assets/icons/call-center.png" alt="Agente" class="agent__avatar">
+        </header>
+
+        <div class="agent__cta">
+          <button class="btn btn--green" (click)="iniciarChat()">
+            🎧 Iniciar Chat
+          </button>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="cfg">
+          <h4>Configuración</h4>
+
+          <label class="switch">
+            <input type="checkbox" [ngModel]="iaAgente()" (ngModelChange)="iaAgente.set($event)" />
+            <span>IA Agente</span>
+          </label>
+
+          <label class="switch">
+            <input type="checkbox" [ngModel]="n8nTelegram()" (ngModelChange)="n8nTelegram.set($event)" />
+            <span>n8n / Telegram</span>
+          </label>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="cfg">
+          <h4>Integración en sitio</h4>
+
+          <label class="switch">
+            <input type="checkbox" [ngModel]="agenteEnSitio()" (ngModelChange)="agenteEnSitio.set($event)" />
+            <span>Mostrar widget flotante</span>
+          </label>
+        </div>
+      </div>
+    </aside>
+  </div>
+</section>

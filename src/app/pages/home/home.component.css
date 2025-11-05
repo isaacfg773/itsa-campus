@@ -319,3 +319,15 @@
   transform: translateY(-6px);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
 }
+.btn--login {
+  background: #16a34a;          /* verde ITSA */
+  color: #0b0f13;               /* casi negro */
+  font-weight: 700;
+  padding: 8px 18px;
+  border-radius: 999px;
+  border: 1px solid #22c55e;
+}
+.btn--login:hover {
+  filter: brightness(1.05);
+  transform: translateY(-1px);
+}

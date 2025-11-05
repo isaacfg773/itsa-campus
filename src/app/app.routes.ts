@@ -1,5 +1,7 @@
 import { Routes } from '@angular/router';
 
+import { PanelComponent } from './pages/panel/panel.component';
+
 import { HomeComponent } from './pages/home/home.component';
 import { CarrerasComponent } from './pages/carreras/carreras.component';
 import { CarreraDetalleComponent } from './pages/carrera-detalle/carrera-detalle.component';
@@ -23,5 +25,6 @@ export const routes: Routes = [
   { path: 'contacto', component: ContactoComponent },
   { path: 'login', component: LoginComponent },
  { path: 'agente', component: AgenteComponent },       // 👈 nuevo
+  { path: 'panel', component: PanelComponent }, // 👈 nuevo
   { path: '**', redirectTo: '' },
 ];
