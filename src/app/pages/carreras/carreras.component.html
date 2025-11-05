@@ -5,7 +5,7 @@
       Programas técnicos con alta empleabilidad, práctica real y convenios.
     </p>
 
-    <!-- Controles -->
+    <!-- CONTROLES -->
     <div class="toolbar">
       <input
         type="search"
@@ -20,10 +20,9 @@
       </div>
     </div>
 
-    <!-- Grid de carreras -->
+    <!-- GRID DE CARRERAS -->
     <div class="grid">
       <article class="card carrera" *ngFor="let c of listaFiltrada">
-        <!-- 👇 Usamos ngStyle para evitar comillas rotas -->
         <div class="thumb" [ngStyle]="{'background-image': 'url(' + (c.imagen || '/carreras/default.jpg') + ')'}">
           <span class="badge">{{ c.duracion }}</span>
         </div>
@@ -37,8 +36,12 @@
           </div>
 
           <div class="actions">
-            <a class="btn btn--outline" [routerLink]="['/carrera', c.slug]">Ver malla</a>
-            <a class="btn btn--green" href="https://api.whatsapp.com/send?phone=59176433612" target="_blank" rel="noopener">
+            <!-- 👉 Cambiado: ahora abre el modal -->
+            <button class="btn btn--outline" type="button" (click)="onVerMalla($event, c)">Ver malla</button>
+            <a class="btn btn--green"
+               href="https://api.whatsapp.com/send?phone=59176433612"
+               target="_blank"
+               rel="noopener">
               Inscribirme
             </a>
           </div>
@@ -46,9 +49,20 @@
       </article>
     </div>
 
-    <!-- vacío -->
+    <!-- MENSAJE VACÍO -->
     <div *ngIf="!listaFiltrada.length" class="empty panel">
       <p>Sin resultados para “{{ q }}”. Prueba otra palabra o quita filtros.</p>
     </div>
   </div>
 </section>
+
+<!-- ========================== -->
+<!-- MODAL DE MALLA CURRICULAR -->
+<!-- ========================== -->
+<div class="malla-modal" *ngIf="modalOpen" (click)="closeMalla()">
+  <div class="malla-modal__inner" (click)="$event.stopPropagation()">
+    <button class="malla-modal__close" (click)="closeMalla()">✕</button>
+    <h3 class="malla-modal__title">{{ modalTitle }}</h3>
+    <img class="malla-modal__img" [src]="modalSrc!" alt="Malla curricular" />
+  </div>
+</div>

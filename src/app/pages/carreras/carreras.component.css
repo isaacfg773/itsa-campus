@@ -65,3 +65,57 @@
 
 /* Vacío */
 .empty{ margin-top:18px; padding:18px; text-align:center; border-radius:14px }
+
+
+/* ===== Modal Malla (full screen, siempre centrado) ===== */
+.malla-modal{
+  position: fixed;
+  left: 0; top: 0; right: 0; bottom: 0;   /* cubre viewport */
+  width: 100vw; height: 100vh;
+  background: rgba(0,0,0,.7);
+  display: grid;                          /* centrado perfecto */
+  place-items: center;
+  padding: 24px;
+  z-index: 2147483647;                    /* muy por encima de todo */
+}
+
+.malla-modal__inner{
+  position: relative;
+  background: #111;
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: 16px;
+  padding: 16px;
+  max-width: 1024px;
+  width: min(1024px, 95vw);
+  max-height: 90vh;                       /* no desborda la pantalla */
+  overflow: auto;                         /* scroll interno si es muy alta */
+  box-shadow: 0 20px 60px rgba(0,0,0,.6);
+}
+
+.malla-modal__title{
+  margin: 0 0 10px 0;
+  color: #fff;
+  font-size: 18px;
+  text-align: center;
+}
+
+.malla-modal__img{
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 8px;
+}
+
+.malla-modal__close{
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  background: rgba(255,255,255,.08);
+  color: #fff;
+}
+.malla-modal__close:hover{ background: rgba(255,255,255,.15); }
