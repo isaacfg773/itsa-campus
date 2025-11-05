@@ -4,6 +4,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { CarrerasComponent } from './pages/carreras/carreras.component';
 import { CarreraDetalleComponent } from './pages/carrera-detalle/carrera-detalle.component';
 import { DirectoresComponent } from './pages/directores/directores.component';
+import { EventosComponent } from './pages/eventos/eventos.component';
 
 import { NoticiasComponent } from './pages/noticias/noticias.component';
 import { NosotrosComponent } from './pages/nosotros/nosotros.component';
@@ -16,7 +17,8 @@ export const routes: Routes = [
   { path: 'carreras/:id', component: CarreraDetalleComponent },
  { path: 'directores', component: DirectoresComponent },             
   { path: 'noticias', component: NoticiasComponent },
-  { path: 'nosotros', component: NosotrosComponent },
+  { path: 'nosotros', component: NosotrosComponent },  
+  { path: 'eventos', component: EventosComponent },
   { path: 'contacto', component: ContactoComponent },
   { path: 'login', component: LoginComponent },
   { path: '**', redirectTo: '' },

@@ -16,36 +16,34 @@
         class="search"
         type="search"
         placeholder="Buscar evento, lugar o palabra clave..."
-        [ngModel]="q()"
-        (ngModelChange)="setQ($event); resetPage()"
+        [(ngModel)]="q"
+        (ngModelChange)="resetPage()"
       />
 
       <div class="chips">
         <button
           class="chip"
-          [class.active]="cat() === 'Todos'"
+          [class.active]="categoria === 'Todos'"
           (click)="setCat('Todos')">Todos</button>
 
         <button
           class="chip"
           *ngFor="let c of categorias"
-          [class.active]="cat() === c"
+          [class.active]="categoria === c"
           (click)="setCat(c)">{{ c }}</button>
       </div>
 
       <div class="selects">
-        <!-- Mes -->
-        <select [ngModel]="mes()" (ngModelChange)="setMes($event)">
-          <option [ngValue]="''">Todos los meses</option>
+        <select [(ngModel)]="mes" (ngModelChange)="setMes(mes)">
+          <option [ngValue]="'Todos'">Todos los meses</option>
           <option *ngFor="let i of [1,2,3,4,5,6,7,8,9,10,11,12]" [ngValue]="i">
             {{ monthLabel(i) }}
           </option>
         </select>
 
-        <!-- Año -->
-        <select [ngModel]="anio()" (ngModelChange)="setAnio($event)">
-          <option [ngValue]="''">Todos los años</option>
-          <option *ngFor="let y of aniosDisponibles()" [ngValue]="y">{{ y }}</option>
+        <select [(ngModel)]="anio" (ngModelChange)="setAnio(anio)">
+          <option [ngValue]="'Todos'">Todos los años</option>
+          <option *ngFor="let y of anios" [ngValue]="y">{{ y }}</option>
         </select>
       </div>
     </div>
@@ -56,11 +54,11 @@
       <!-- GRID DE EVENTOS -->
       <div class="grid">
 
-        <article class="card" *ngFor="let e of paginados()">
+        <article class="card" *ngFor="let e of pageItems">
           <div class="thumb">
-            <div class="bg" [style.backgroundImage]="'url('+ e.imagen +')'"></div>
+            <div class="bg" [style.backgroundImage]="'url(' + e.imagen + ')'"></div>
             <div class="badge">
-              <span>{{ e.fechaISO | date:'dd MMM' | uppercase }}</span>
+              <span>{{ e.fechaISO ? ((e.fechaISO | date:'dd MMM') | uppercase) : '' }}</span>
             </div>
           </div>
 
@@ -82,15 +80,15 @@
         </article>
 
         <!-- EMPTY STATE -->
-        <div class="empty" *ngIf="!paginados().length">
+        <div class="empty" *ngIf="!pageItems.length">
           <p>No se encontraron eventos con los filtros aplicados.</p>
         </div>
 
         <!-- PAGINACIÓN -->
-        <div class="pagination" *ngIf="filtrados().length > pageSize()">
-          <button class="pager" [disabled]="page()===1" (click)="page.set(page()-1)">&larr;</button>
-          <span>Página {{ page() }} / {{ totalPages() }}</span>
-          <button class="pager" [disabled]="page()===totalPages()" (click)="page.set(page()+1)">&rarr;</button>
+        <div class="pagination" *ngIf="filtrados.length > pageSize">
+          <button class="pager" [disabled]="page===1" (click)="page = page - 1">&larr;</button>
+          <span>Página {{ page }} / {{ totalPages }}</span>
+          <button class="pager" [disabled]="page===totalPages" (click)="page = page + 1">&rarr;</button>
         </div>
 
       </div>
@@ -99,7 +97,7 @@
       <aside class="aside">
         <h3 class="aside__title">Próximos eventos</h3>
         <div class="aside__list">
-          <a class="mini" *ngFor="let p of proximos()">
+          <a class="mini" *ngFor="let p of proximos">
             <img [src]="p.imagen" [alt]="p.titulo" />
             <div>
               <strong>{{ p.titulo }}</strong>
@@ -131,11 +129,11 @@
   </div>
 
   <!-- MODAL GALERÍA -->
-  <div class="modal" *ngIf="modalOpen()" (click)="closeModal()">
+  <div class="modal" *ngIf="isModalOpen" (click)="closeModal()">
     <div class="modal__inner" (click)="$event.stopPropagation()">
       <button class="modal__close" (click)="closeModal()">✕</button>
       <div class="modal__gallery">
-        <img *ngFor="let src of modalImgs()" [src]="src" alt="Foto de evento" loading="lazy">
+        <img *ngFor="let src of modalImgs" [src]="src" alt="Foto de evento" loading="lazy">
       </div>
     </div>
   </div>

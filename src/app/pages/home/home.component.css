@@ -1,0 +1,293 @@
+/* ======================
+   ESTILOS GENERALES
+====================== */
+.eventos {
+  padding: 4rem 1rem;
+  background: #0e0e0e;
+  color: #fff;
+  min-height: 100vh;
+}
+
+.container {
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+/* ======================
+   ENCABEZADO
+====================== */
+.ev-hero {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.ev-title {
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: #1adb6d;
+  margin-bottom: 1rem;
+}
+
+.ev-lead {
+  font-size: 1.1rem;
+  color: #ccc;
+  max-width: 800px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* ======================
+   LAYOUT
+====================== */
+.ev-layout {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  gap: 2.5rem;
+}
+
+@media (max-width: 992px) {
+  .ev-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ======================
+   GRID DE EVENTOS
+====================== */
+.ev-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+}
+
+/* ======================
+   CARD DE EVENTO
+====================== */
+.ev-card {
+  background: #151515;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.ev-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 0 25px rgba(26, 219, 109, 0.4);
+}
+
+.ev-thumb {
+  position: relative;
+  overflow: hidden;
+}
+
+.ev-thumb img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.ev-card:hover img {
+  transform: scale(1.08);
+}
+
+.ev-badge {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  background: rgba(26, 219, 109, 0.9);
+  color: #000;
+  font-weight: 600;
+  font-size: 0.85rem;
+  padding: 4px 10px;
+  border-radius: 12px;
+}
+
+.ev-body {
+  padding: 1.2rem 1.5rem 1.8rem;
+}
+
+.ev-pill {
+  display: inline-block;
+  background: rgba(26, 219, 109, 0.15);
+  color: #1adb6d;
+  font-size: 0.8rem;
+  padding: 4px 12px;
+  border-radius: 20px;
+  margin-bottom: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.ev-h2 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #fff;
+}
+
+.ev-desc {
+  font-size: 0.95rem;
+  color: #ccc;
+  margin-bottom: 1rem;
+  line-height: 1.5;
+}
+
+.ev-meta {
+  font-size: 0.85rem;
+  color: #888;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1.2rem;
+}
+
+.ev-actions {
+  display: flex;
+  gap: 0.8rem;
+}
+
+.btn {
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 0.6rem 1.2rem;
+  border-radius: 25px;
+  text-decoration: none;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.btn--green {
+  background: #1adb6d;
+  color: #000;
+}
+
+.btn--green:hover {
+  background: #14a75a;
+}
+
+.btn--outline {
+  border: 1px solid #1adb6d;
+  color: #1adb6d;
+  background: transparent;
+}
+
+.btn--outline:hover {
+  background: #1adb6d;
+  color: #000;
+}
+
+/* ======================
+   ASIDE (Próximos + FAQ)
+====================== */
+.ev-aside {
+  background: #141414;
+  border-radius: 14px;
+  padding: 1.5rem;
+  height: fit-content;
+}
+
+.ev-aside-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #1adb6d;
+  margin-bottom: 1rem;
+}
+
+/* Mini cards de próximos */
+.ev-mini {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  text-decoration: none;
+  color: #fff;
+}
+
+.ev-mini img {
+  width: 65px;
+  height: 65px;
+  object-fit: cover;
+  border-radius: 10px;
+  border: 2px solid #1adb6d;
+}
+
+.ev-mini:hover strong {
+  color: #1adb6d;
+}
+
+.ev-mini-meta {
+  font-size: 0.8rem;
+  color: #aaa;
+}
+
+/* FAQ */
+.ev-faq details {
+  background: #1b1b1b;
+  border-radius: 10px;
+  margin-bottom: 0.6rem;
+  padding: 0.6rem 0.8rem;
+}
+
+.ev-faq summary {
+  font-weight: 600;
+  cursor: pointer;
+  color: #1adb6d;
+  list-style: none;
+}
+
+.ev-faq p {
+  margin-top: 0.4rem;
+  color: #ccc;
+  font-size: 0.85rem;
+  line-height: 1.4;
+}
+
+/* ======================
+   RESPONSIVE
+====================== */
+@media (max-width: 768px) {
+  .ev-title {
+    font-size: 2rem;
+  }
+
+  .ev-card img {
+    height: 180px;
+  }
+
+  .ev-aside {
+    margin-top: 2rem;
+  }
+}
+/* contenedor de los botones del hero */
+.hero__cta{
+  margin-top:24px;
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+}
+
+/* variantes nuevas */
+.btn--yellow{
+  background:#ffd44d;
+  color:#0b0b0c;
+  border:1px solid #eabf3a;
+}
+.btn--yellow:hover{ filter:brightness(1.06); }
+
+.btn--darkgreen{
+  background:#0f7f3a;
+  color:#fff;
+  border:1px solid #0b6a31;
+}
+.btn--darkgreen:hover{ filter:brightness(1.08); }
+
+/* responsivo */
+@media (max-width:720px){
+  .hero__cta .btn{
+    width:100%;
+    text-align:center;
+  }
+}

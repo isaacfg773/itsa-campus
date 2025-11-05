@@ -3,11 +3,12 @@
   <div class="container topbar__grid">
     <!-- LOGO -->
     <a routerLink="/" class="topbar__logo" aria-label="ITSA">
-      <img src="assets/home/logo.png" alt="ITSA">
+      <img src="assets/home/logo.jpg" alt="ITSA">
     </a>
 
     <!-- MENÚ CENTRAL -->
     <nav class="topbar__menu" aria-label="Principal">
+       <a routerLink="/nosotros">Nosotros</a>
       <a routerLink="/directores">Directores</a>
       <a routerLink="/oferta">Carreras</a>
       <a routerLink="/eventos">Eventos</a>
@@ -33,10 +34,33 @@
         Educación Técnica de calidad con enfoque práctico, convenios y sedes a nivel nacional.
       </p>
 
-      <div style="margin-top:24px;display:flex;gap:12px;flex-wrap:wrap">
-        <a class="btn btn--green" routerLink="/oferta">ver Carreras</a>
-        <a class="btn btn--outline" routerLink="/contacto">Habla con un Agente.</a>
-      </div>
+      <!-- Botonera del hero -->
+<div class="hero__cta">
+  <!-- NUEVOS -->
+  <a class="btn btn--yellow"
+     href="https://itsa.edu.bo/proceso-de-admision-2025/"
+     target="_blank" rel="noopener">
+    Proceso de Admisión 2025
+  </a>
+
+  <a class="btn btn--darkgreen"
+     href="https://orion.itsa.edu.bo/postulantes/registrarPostulante.xhtml"
+     target="_blank" rel="noopener">
+    Formulario de Admisión II–2025
+  </a>
+
+  <!-- EXISTENTES -->
+  <a class="btn btn--green" routerLink="/oferta">Ver carreras</a>
+  <a class="btn btn--outline" routerLink="/contacto">Habla con un Agente</a>
+
+  <!-- NUEVO -->
+  <a class="btn btn--outline"
+     href="https://itsa.edu.bo/2025/01/15/proceso-de-admision-nuevo-2025/"
+     target="_blank" rel="noopener">
+    Procesos Administrativos
+  </a>
+</div>
+
     </div>
 
     <!-- Imagen circular con doble aro -->
@@ -118,8 +142,9 @@
 <section class="section">
   <div class="container">
     <h2 style="color:var(--brand)">Contáctanos</h2>
-    <p class="lead">📍 Calle Sucre N.º 468 entre Jordán y Calama, Cochabamba, Bolivia.</p>
-    <p class="lead">📞 4-4256035 | 📧 info@itsa.edu.bo</p>
+    <p class="lead">📍 Av. Circunvalación entre Ismael Céspedes y Granado.
+Sacaba – Cochabamba.</p>
+    <p class="lead">📞 67598222 | 📧 info@itsa.edu.bo</p>
     <a class="btn btn--green" href="https://api.whatsapp.com/send?phone=59176433612" target="_blank" rel="noopener">WhatsApp</a>
   </div>
 </section>

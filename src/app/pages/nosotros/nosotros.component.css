@@ -1,0 +1,54 @@
+/* Usa las mismas variables globales de tu theme */
+.about { padding: 40px 0 80px; }
+.container{max-width:1200px;margin:0 auto;padding:0 20px}
+
+/* HERO */
+.hero{display:grid;gap:28px;align-items:center;margin-bottom:28px}
+@media(min-width:980px){.hero{grid-template-columns:1.2fr .8fr}}
+.hero h1{margin:0 0 8px 0;font-size:42px}
+.lead{color:var(--muted);margin:0}
+
+.hero__stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:18px}
+.stat{background:rgba(255,255,255,.03);border:1px solid var(--line);border-radius:14px;padding:12px;text-align:center}
+.stat__value{font-size:22px;font-weight:800}
+.stat__label{font-size:12px;color:var(--muted)}
+
+.hero__media{display:flex;justify-content:center}
+.media__ring{width:300px;height:300px;border-radius:999px;position:relative;background:radial-gradient(circle at 30% 30%,rgba(20,154,76,.18),transparent 60%);box-shadow:0 0 0 6px rgba(20,154,76,.25),0 0 0 12px rgba(250,204,21,.15)}
+.media__ring img{position:absolute;inset:50% auto auto 50%;transform:translate(-50%,-50%);width:70%;height:70%;object-fit:contain;filter:drop-shadow(0 6px 18px rgba(0,0,0,.6))}
+
+/* PANEL / CARD / GRID */
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:22px;margin:18px 0}
+.panel h2{margin:0 0 8px 0}
+.card{background:rgba(255,255,255,.03);border:1px solid var(--line);border-radius:16px;padding:18px}
+.grid-2{display:grid;gap:18px;grid-template-columns:1fr}
+@media(min-width:980px){.grid-2{grid-template-columns:1fr 1fr}}
+
+.values{display:grid;gap:16px;grid-template-columns:repeat(2,1fr)}
+@media(min-width:980px){.values{grid-template-columns:repeat(4,1fr)}}
+.v{background:rgba(255,255,255,.03);border:1px solid var(--line);border-radius:14px;padding:14px;text-align:center}
+.v__icon{font-size:28px;margin-bottom:6px}
+.v__title{margin:0 0 6px 0}
+.v__text{color:var(--muted);margin:0}
+
+/* TIMELINE */
+.timeline{list-style:none;margin:0;padding:0;position:relative}
+.timeline:before{content:"";position:absolute;left:18px;top:0;bottom:0;width:2px;background:var(--line)}
+.t{display:grid;grid-template-columns:auto 1fr;gap:12px;position:relative;padding-left:12px;margin:14px 0}
+.t__dot{width:12px;height:12px;border-radius:50%;background:var(--brand);border:2px solid #0c0c0d;position:absolute;left:12px;top:6px;box-shadow:0 0 0 4px rgba(20,154,76,.2)}
+.t__content{padding-left:24px}
+.t__year{font-weight:700;color:var(--brand);letter-spacing:.06em}
+.t__title{font-weight:700;margin:2px 0 4px 0}
+.t__desc{color:var(--muted);margin:0}
+
+/* CTA */
+.cta{margin-top:26px}
+.cta__box{display:flex;gap:18px;align-items:center;justify-content:space-between;background:linear-gradient(90deg,rgba(20,154,76,.08),rgba(255,255,255,.03));border:1px solid var(--line);border-radius:18px;padding:22px}
+.cta .lead{margin:4px 0 12px}
+.contact{margin:0;padding-left:18px;color:var(--muted)}
+.contact li{margin:4px 0}
+.cta__actions{display:flex;gap:12px;flex-wrap:wrap}
+
+.btn{display:inline-block;padding:12px 22px;border-radius:999px;font-weight:600}
+.btn--green{background:var(--brand);color:#000}
+.btn--outline{border:1px solid color-mix(in oklab,var(--brand),transparent 40%);color:var(--brand)}

@@ -1,1 +1,89 @@
-<p>nosotros works!</p>
+<section class="about">
+  <div class="container">
+
+    <!-- HERO -->
+    <header class="hero">
+      <div class="hero__text">
+        <h1>{{ titulo }}</h1>
+        <p class="lead">{{ subtitulo }}</p>
+        <div class="hero__stats">
+          <div class="stat" *ngFor="let s of stats">
+            <div class="stat__value">{{ s.value }}</div>
+            <div class="stat__label">{{ s.label }}</div>
+          </div>
+        </div>
+      </div>
+      <div class="hero__media">
+        <div class="media__ring">
+          <img *ngFor="let l of logos" [src]="l.src" [alt]="l.alt" />
+        </div>
+      </div>
+    </header>
+
+    <!-- QUIÉNES SOMOS -->
+    <section class="panel">
+      <h2>¿Quiénes somos?</h2>
+      <p class="lead">{{ quienesSomos }}</p>
+    </section>
+
+    <!-- MISIÓN / VISIÓN -->
+    <section class="grid-2">
+      <article class="card">
+        <h3>Misión</h3>
+        <p>{{ mision }}</p>
+      </article>
+      <article class="card">
+        <h3>Visión</h3>
+        <p>{{ vision }}</p>
+      </article>
+    </section>
+
+    <!-- VALORES -->
+    <section class="panel">
+      <h2>Nuestros valores</h2>
+      <div class="values">
+        <article class="v" *ngFor="let v of valores">
+          <div class="v__icon">{{ v.icon }}</div>
+          <h4 class="v__title">{{ v.titulo }}</h4>
+          <p class="v__text">{{ v.texto }}</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- HISTORIA / LÍNEA DE TIEMPO -->
+    <section class="panel">
+      <h2>Nuestra historia</h2>
+      <ol class="timeline">
+        <li class="t" *ngFor="let h of historia">
+          <div class="t__dot"></div>
+          <div class="t__content">
+            <div class="t__year">{{ h.anio }}</div>
+            <div class="t__title">{{ h.titulo }}</div>
+            <div class="t__desc">{{ h.desc }}</div>
+          </div>
+        </li>
+      </ol>
+    </section>
+
+    <!-- CTA CONTACTO -->
+    <section class="cta">
+      <div class="cta__box">
+        <div>
+          <h3>¿Listo para conocer más?</h3>
+          <p class="lead">Visítanos o escríbenos. Estamos para ayudarte.</p>
+          <ul class="contact">
+            <li>📍 {{ direccion }}</li>
+            <li>📞 {{ telefono }}</li>
+            <li>✉️ {{ email }}</li>
+          </ul>
+        </div>
+        <div class="cta__actions">
+          <a class="btn btn--green" [href]="whatsapp" target="_blank" rel="noopener">Habla con un asesor</a>
+          <a class="btn btn--outline" routerLink="/contacto">Ver contacto</a>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</section>
+

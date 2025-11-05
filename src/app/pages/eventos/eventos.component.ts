@@ -1,168 +1,224 @@
-import { Component, computed, signal } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component } from '@angular/core';
+import { CommonModule, DatePipe, NgFor, NgIf } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
-type Categoria = 'Académico' | 'Convenios' | 'Taller' | 'Feria' | 'Cultural' | 'Deportivo';
+type Categoria =
+  | 'Admisiones'
+  | 'Ferias'
+  | 'Talleres'
+  | 'Convenios'
+  | 'Académico'
+  | 'Autoridades';
 
 interface Evento {
-  id: number;
+  id: string;
   titulo: string;
   descripcion: string;
-  fechaISO: string;       // '2025-11-15'
-  lugar: string;
   categoria: Categoria;
-  imagen: string;         // assets/eventos/...
-  enlace?: string;        // link externo (opcional)
-  galeria?: string[];     // ids/urls de fotos
+  fechaISO: string;     // 'YYYY-MM-DD'
+  lugar: string;
+  imagen: string;       // ruta a assets
+  enlace?: string;      // opcional
+  galeria?: string[];   // opcional
 }
 
 @Component({
   selector: 'app-eventos',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, NgFor, NgIf, DatePipe],
   templateUrl: './eventos.component.html',
   styleUrls: ['./eventos.component.css'],
 })
 export class EventosComponent {
-  // ====== Data (puedes reemplazar por tu API después) ======
-  private _eventos = signal<Evento[]>([
-  {
-    id: 1,
-    titulo: 'Admisión 2025 – Lanzamiento',
-    descripcion: 'Presentación oficial de cronograma, requisitos y modalidades de ingreso.',
-    fechaISO: '2025-11-05',
-    lugar: 'Sede Central Sacaba',
-    categoria: 'Académico',
-    imagen: 'assets/eventos/admision2025-1.jpg',
-    galeria: ['assets/eventos/admision2025.jpg','assets/eventos/afiche.jpg']
-  },
-  {
-    id: 2,
-    titulo: 'Convocatoria Admisión 2025',
-    descripcion: 'Publicación de la convocatoria y registro de postulantes.',
-    fechaISO: '2025-11-10',
-    lugar: 'Dirección Académica',
-    categoria: 'Académico',
-    imagen: 'assets/eventos/admision2025.jpg'
-  },
-  {
-    id: 3,
-    titulo: 'Afiche Oficial – Agenda ITSA',
-    descripcion: 'Difusión de actividades institucionales del mes.',
-    fechaISO: '2025-11-15',
-    lugar: 'Comunicación ITSA',
-    categoria: 'Cultural',
-    imagen: 'assets/eventos/afiche.jpg'
-  },
-  {
-    id: 4,
-    titulo: 'Visita del Sr. Gobernador',
-    descripcion: 'Reunión institucional para fortalecer alianzas y proyectos educativos.',
-    fechaISO: '2025-11-20',
-    lugar: 'Rectorado',
-    categoria: 'Convenios',
-    imagen: 'assets/eventos/gobernador.jpg'
-  },
-  {
-    id: 5,
-    titulo: 'FIPAB – Participación ITSA',
-    descripcion: 'Feria de innovación y productividad con proyectos destacados.',
-    fechaISO: '2025-11-28',
-    lugar: 'Recinto Ferial',
-    categoria: 'Feria',
-    imagen: 'assets/eventos/fipab.jpg',
-    galeria: ['assets/eventos/evento1.jpg']
-  },
-  {
-    id: 6,
-    titulo: 'Evento Especial',
-    descripcion: 'Cobertura fotográfica de actividades recientes.',
-    fechaISO: '2025-12-05',
-    lugar: 'Patio Central',
-    categoria: 'Cultural',
-    imagen: 'assets/eventos/evento1.jpg'
+
+  /* =========================
+     1) DATA (editar libremente)
+  ========================== */
+  eventos: Evento[] = [
+    {
+      id: 'admision-2025',
+      titulo: 'Inscripciones Gestión 2025',
+      descripcion:
+        'Apertura oficial de inscripciones para la Gestión 2025. Conoce requisitos, fechas y beneficios.',
+      categoria: 'Admisiones',
+      fechaISO: '2025-01-10',
+      lugar: 'ITSA – Secretaría Académica',
+      imagen: 'assets/eventos/admision2025.png',
+      enlace: 'https://itsa.edu.bo',
+      galeria: [
+        'assets/eventos/admision2025.png',
+        'assets/eventos/admision2025-1.png',
+      ],
+    },
+    {
+      id: 'fipab-feria',
+      titulo: 'FIPAB – Feria de Proyectos',
+      descripcion:
+        'Exposición de proyectos destacados de estudiantes y docentes con enfoque productivo.',
+      categoria: 'Ferias',
+      fechaISO: '2025-03-18',
+      lugar: 'Auditorio ITSA',
+      imagen: 'assets/eventos/fipab.jpg',
+    },
+    {
+      id: 'taller-afiche',
+      titulo: 'Taller de Comunicación Visual',
+      descripcion:
+        'Sesión práctica para elaboración de piezas gráficas y afiches para difusión institucional.',
+      categoria: 'Talleres',
+      fechaISO: '2025-02-22',
+      lugar: 'Laboratorio de Sistemas',
+      imagen: 'assets/eventos/afiche.jpg',
+    },
+    {
+      id: 'convenio-gobernador',
+      titulo: 'Firma de Convenio Interinstitucional',
+      descripcion:
+        'Convenio para prácticas preprofesionales y cooperación técnica con la Gobernación.',
+      categoria: 'Convenios',
+      fechaISO: '2025-04-05',
+      lugar: 'Salón Principal',
+      imagen: 'assets/eventos/gobernador.jpg',
+    },
+    {
+      id: 'defensas-trabajos',
+      titulo: 'Defensas de Trabajos de Grado',
+      descripcion:
+        'Cronograma de defensas de proyectos y monografías de fin de carrera.',
+      categoria: 'Académico',
+      fechaISO: '2025-05-20',
+      lugar: 'Aulas 301–305',
+      imagen: 'assets/eventos/evento1.jpeg',
+    },
+    {
+      id: 'acto-acad',
+      titulo: 'Acto Académico – Reconocimientos',
+      descripcion:
+        'Reconocimiento a estudiantes destacados y presentación de resultados institucionales.',
+      categoria: 'Autoridades',
+      fechaISO: '2025-06-08',
+      lugar: 'Patio de Honor',
+      imagen: 'assets/eventos/admision2025-1.png',
+    },
+  ];
+
+  /* =========================
+     2) FILTROS / ESTADO UI
+  ========================== */
+  categorias: Categoria[] = [
+    'Admisiones',
+    'Ferias',
+    'Talleres',
+    'Convenios',
+    'Académico',
+    'Autoridades',
+  ];
+
+  q = '';                      // texto de búsqueda
+  categoria: 'Todos' | Categoria = 'Todos';
+  mes: 'Todos' | number = 'Todos';
+  anio: 'Todos' | number = 'Todos';
+
+  // paginación
+  page = 1;
+  pageSize = 6;
+
+  // modal galería
+  isModalOpen = false;
+  modalImgs: string[] = [];
+
+  /* =========================
+     3) GETTERS CALCULADOS
+  ========================== */
+
+  // Eventos ordenados por fecha DESC
+  get eventosOrdenados(): Evento[] {
+    return [...this.eventos].sort(
+      (a, b) => +new Date(b.fechaISO) - +new Date(a.fechaISO)
+    );
   }
-]);
 
-
-  categorias: Categoria[] = ['Académico','Convenios','Taller','Feria','Cultural','Deportivo'];
-
-  // ====== Filtros ======
-  q = signal<string>('');
-  cat = signal<Categoria | 'Todos'>('Todos');
-  mes = signal<number | 'Todos'>('Todos');   // 1..12
-  anio = signal<number | 'Todos'>('Todos');  // ej. 2025
-
-  // ====== Paginación ======
-  page = signal<number>(1);
-  pageSize = signal<number>(6);
-
-  // Años disponibles (derivado del dataset)
-  aniosDisponibles = computed(() => {
+  // Años disponibles para filtrar
+  get anios(): number[] {
     const set = new Set<number>();
-    for (const e of this._eventos()) set.add(new Date(e.fechaISO).getFullYear());
-    return Array.from(set).sort();
-  });
+    this.eventos.forEach((e) => set.add(new Date(e.fechaISO).getFullYear()));
+    return Array.from(set).sort((a, b) => b - a);
+  }
 
-  // Próximos (siguientes 3 desde hoy)
-  proximos = computed(() => {
-    const now = new Date();
-    return this._eventos()
-      .filter(e => new Date(e.fechaISO) >= new Date(now.toDateString()))
-      .sort((a,b) => +new Date(a.fechaISO) - +new Date(b.fechaISO))
-      .slice(0, 3);
-  });
+  // Filtro principal
+  get filtrados(): Evento[] {
+    return this.eventosOrdenados.filter((e) => {
+      const txt = (this.q || '').toLowerCase();
+      const cumpleTexto =
+        !txt ||
+        e.titulo.toLowerCase().includes(txt) ||
+        e.descripcion.toLowerCase().includes(txt) ||
+        e.lugar.toLowerCase().includes(txt) ||
+        e.categoria.toLowerCase().includes(txt);
 
-  // Lista filtrada
-  filtrados = computed(() => {
-    const text = this.q().trim().toLowerCase();
-    const cat = this.cat();
-    const m = this.mes();
-    const y = this.anio();
-
-    return this._eventos().filter(e => {
       const d = new Date(e.fechaISO);
-      const okText =
-        !text ||
-        e.titulo.toLowerCase().includes(text) ||
-        e.descripcion.toLowerCase().includes(text) ||
-        e.lugar.toLowerCase().includes(text);
+      const cumpleCat = this.categoria === 'Todos' || e.categoria === this.categoria;
+      const cumpleMes = this.mes === 'Todos' || d.getMonth() + 1 === this.mes;
+      const cumpleAnio = this.anio === 'Todos' || d.getFullYear() === this.anio;
 
-      const okCat = cat === 'Todos' ? true : e.categoria === cat;
-      const okMes = m === 'Todos' ? true : (d.getMonth() + 1) === m;
-      const okAnio = y === 'Todos' ? true : d.getFullYear() === y;
-
-      return okText && okCat && okMes && okAnio;
-    }).sort((a,b) => +new Date(a.fechaISO) - +new Date(b.fechaISO));
-  });
-
-  // Página actual (slice)
-  paginados = computed(() => {
-    const start = (this.page() - 1) * this.pageSize();
-    return this.filtrados().slice(start, start + this.pageSize());
-  });
-
-  totalPages = computed(() =>
-    Math.max(1, Math.ceil(this.filtrados().length / this.pageSize()))
-  );
-
-  // Helpers UI
-  resetPage() { this.page.set(1); }
-  setCat(c: Categoria | 'Todos') { this.cat.set(c); this.resetPage(); }
-  setMes(m: number | 'Todos') { this.mes.set(m); this.resetPage(); }
-  setAnio(y: number | 'Todos') { this.anio.set(y); this.resetPage(); }
-
-  monthLabel(n: number) {
-    return ['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'][n-1];
+      return cumpleTexto && cumpleCat && cumpleMes && cumpleAnio;
+    });
   }
 
-  // Modal muy simple para galería (opcional)
-  modalOpen = signal<boolean>(false);
-  modalImgs = signal<string[]>([]);
+  // Paginados
+  get pageItems(): Evento[] {
+    const i0 = (this.page - 1) * this.pageSize;
+    return this.filtrados.slice(i0, i0 + this.pageSize);
+  }
+
+  get totalPages(): number {
+    return Math.max(1, Math.ceil(this.filtrados.length / this.pageSize));
+  }
+
+  // Próximos (los 4 más cercanos a partir de hoy)
+  get proximos(): Evento[] {
+    const hoy = new Date().setHours(0, 0, 0, 0);
+    return this.eventosOrdenados
+      .filter((e) => +new Date(e.fechaISO) >= hoy)
+      .slice(0, 4);
+  }
+
+  /* =========================
+     4) ACCIONES UI
+  ========================== */
+  setCat(c: 'Todos' | Categoria) {
+    this.categoria = c;
+    this.resetPage();
+  }
+
+  setMes(m: 'Todos' | number) {
+    this.mes = m;
+    this.resetPage();
+  }
+
+  setAnio(a: 'Todos' | number) {
+    this.anio = a;
+    this.resetPage();
+  }
+
+  resetPage() {
+    this.page = 1;
+  }
+
+  // helpers para labels de mes
+  monthLabel(i: number): string {
+    const f = new Date(2025, i - 1, 1);
+    return f.toLocaleString('es-BO', { month: 'long' });
+  }
+
+  // galería modal
   openGaleria(imgs?: string[]) {
-    if (!imgs || !imgs.length) return;
-    this.modalImgs.set(imgs);
-    this.modalOpen.set(true);
+    this.modalImgs = imgs && imgs.length ? imgs : [];
+    this.isModalOpen = this.modalImgs.length > 0;
   }
-  closeModal(){ this.modalOpen.set(false); }
+
+  closeModal() {
+    this.isModalOpen = false;
+    this.modalImgs = [];
+  }
 }
