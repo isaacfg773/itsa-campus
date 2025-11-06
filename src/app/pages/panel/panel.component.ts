@@ -2,7 +2,8 @@ import { Component, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
-type Tab = 'carreras' | 'noticias' | 'eventos' | 'docentes';
+type Tab = 'carreras' | 'noticias' | 'horarios' | 'requisitos';
+
 
 @Component({
   selector: 'app-panel',
@@ -21,26 +22,26 @@ export class PanelComponent {
   agenteEnSitio = signal(true);
 
   // mock de items por sección
-  items: Record<Tab, { titulo: string; fecha: string }[]> = {
-    carreras: [
-      { titulo: 'Sistemas Informáticos', fecha: '2025-06-01' },
-      { titulo: 'Gastronomía', fecha: '2025-05-28' },
-      { titulo: 'Secretariado Ejecutivo', fecha: '2025-05-10' },
-    ],
-    noticias: [
-      { titulo: 'Feria Tecnológica ITSA 2025', fecha: '2025-05-15' },
-      { titulo: 'Convenio con Empresa Privada', fecha: '2025-05-10' },
-    ],
-    eventos: [
-      { titulo: 'Acto Académico – Reconocimientos', fecha: '2025-06-08' },
-      { titulo: 'Defensas de Trabajos de Grado', fecha: '2025-05-20' },
-      { titulo: 'Feria Gastronómica 2025', fecha: '2025-05-30' },
-    ],
-    docentes: [
-      { titulo: 'Nómina 2025-I', fecha: '2025-04-15' },
-      { titulo: 'Capacitación Docente en Innovación', fecha: '2025-03-28' },
-    ],
-  };
+    items: Record<Tab, { titulo: string; fecha: string }[]> = {
+      carreras: [
+        { titulo: 'Sistemas Informáticos', fecha: '2025-06-01' },
+        { titulo: 'Gastronomía', fecha: '2025-05-28' },
+        { titulo: 'Secretariado Ejecutivo', fecha: '2025-05-10' },
+      ],
+      noticias: [
+        { titulo: 'Inicio de Clases Gestión 2025', fecha: '2025-02-15' },
+        { titulo: 'Feria Tecnológica ITSA', fecha: '2025-05-12' },
+      ],
+      horarios: [
+        { titulo: 'Turno Mañana – 1er Semestre', fecha: '2025-02-10' },
+        { titulo: 'Turno Noche – 2do Semestre', fecha: '2025-08-01' },
+      ],
+      requisitos: [
+        { titulo: 'Certificado de Egreso', fecha: '2025-04-05' },
+        { titulo: 'Certificado de Calificaciones', fecha: '2025-03-30' },
+      ],
+    };
+
 
   // formulario simple (banners / ficha)
   form = {

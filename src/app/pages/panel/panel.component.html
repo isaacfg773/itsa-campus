@@ -4,7 +4,8 @@
     <div class="left">
 
       <!-- NAV TABS (icon tiles) -->
-      <nav class="tiles">
+     <nav class="tiles">
+  <!-- CARRERAS -->
         <button
           class="tile"
           [class.active]="tab()==='carreras'"
@@ -13,6 +14,7 @@
           <span class="tile__text">Carreras</span>
         </button>
 
+        <!-- NOTICIAS -->
         <button
           class="tile"
           [class.active]="tab()==='noticias'"
@@ -21,22 +23,25 @@
           <span class="tile__text">Noticias</span>
         </button>
 
+        <!-- HORARIOS -->
         <button
           class="tile"
-          [class.active]="tab()==='eventos'"
-          (click)="setTab('eventos')">
+          [class.active]="tab()==='horarios'"
+          (click)="setTab('horarios')">
           <span class="tile__icon">📅</span>
-          <span class="tile__text">Eventos</span>
+          <span class="tile__text">Horarios</span>
         </button>
 
+        <!-- REQUISITOS -->
         <button
           class="tile"
-          [class.active]="tab()==='docentes'"
-          (click)="setTab('docentes')">
-          <span class="tile__icon">🗂️</span>
-          <span class="tile__text">Docentes</span>
+          [class.active]="tab()==='requisitos'"
+          (click)="setTab('requisitos')">
+          <span class="tile__icon">📄</span>
+          <span class="tile__text">Requisitos</span>
         </button>
       </nav>
+
 
       <!-- ACTIONS -->
       <div class="actions-row">

@@ -1,0 +1,53 @@
+.requisitos-wrap {
+  padding: 2rem 1rem;
+  color: #f5f5f5;
+  text-align: center;
+}
+
+h1 {
+  color: #27c266;
+  font-size: 2rem;
+  margin-bottom: 0.25rem;
+}
+
+p {
+  color: #aaa;
+  margin-bottom: 2rem;
+}
+
+.cards-grid {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+}
+
+.card {
+  background: #111;
+  border: 1px solid #2a2a2a;
+  border-radius: 12px;
+  padding: 1.5rem;
+  text-align: left;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+}
+
+.card h2 {
+  color: #20c06f;
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+}
+
+ul {
+  list-style: disc;
+  margin-left: 1.5rem;
+  color: #ddd;
+  line-height: 1.5;
+}
+
+.nota {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: #ccc;
+  border-top: 1px solid #222;
+  padding-top: 0.75rem;
+  font-style: italic;
+}
