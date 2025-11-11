@@ -84,6 +84,8 @@
 .cb-close{
   background:transparent; border:0; color:#9ca3af; font-size:18px; cursor:pointer;
 }
+
+/* Avatar dentro del FAB */
 .cb-fab {
   width: 64px;
   height: 64px;
@@ -99,12 +101,10 @@
   position: relative;
   overflow: hidden;
 }
-
 .cb-fab:hover {
   transform: scale(1.05);
   transition: transform 0.2s ease;
 }
-
 .cb-avatar {
   width: 80%;
   height: 80%;

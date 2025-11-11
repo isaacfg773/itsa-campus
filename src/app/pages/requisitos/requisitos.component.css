@@ -1,53 +1,80 @@
+/* ======================
+   SECCIÓN DE REQUISITOS
+   Versión blanca + verde ITSA
+====================== */
 .requisitos-wrap {
   padding: 2rem 1rem;
-  color: #f5f5f5;
+  background: #ffffff;         /* Fondo blanco */
+  color: #111827;              /* Texto oscuro */
   text-align: center;
 }
 
+/* Título principal */
 h1 {
-  color: #27c266;
+  color: #149a4c;              /* Verde ITSA */
   font-size: 2rem;
   margin-bottom: 0.25rem;
 }
 
+/* Subtítulo o descripción */
 p {
-  color: #aaa;
+  color: #4b5563;              /* Gris medio */
   margin-bottom: 2rem;
 }
 
+/* GRID TARJETAS */
 .cards-grid {
   display: grid;
   gap: 2rem;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
 }
 
+/* TARJETA INDIVIDUAL */
 .card {
-  background: #111;
-  border: 1px solid #2a2a2a;
+  background: #ffffff;                     /* Fondo blanco */
+  border: 1px solid #dbe6df;               /* Borde verde claro */
   border-radius: 12px;
   padding: 1.5rem;
   text-align: left;
-  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+  box-shadow: 0 4px 16px rgba(20,154,76,0.08); /* Sombra suave verdosa */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 20px rgba(20,154,76,0.15);
+}
+
+/* Título de cada tarjeta */
 .card h2 {
-  color: #20c06f;
+  color: #149a4c;              /* Verde institucional */
   font-size: 1.3rem;
   margin-bottom: 1rem;
+  font-weight: 700;
 }
 
+/* Listado de requisitos */
 ul {
   list-style: disc;
   margin-left: 1.5rem;
-  color: #ddd;
-  line-height: 1.5;
+  color: #374151;              /* Gris oscuro */
+  line-height: 1.6;
+  font-size: 0.95rem;
 }
 
+/* Nota inferior */
 .nota {
   margin-top: 1rem;
   font-size: 0.9rem;
-  color: #ccc;
-  border-top: 1px solid #222;
+  color: #4b5563;              /* Gris medio */
+  border-top: 1px solid #dbe6df;
   padding-top: 0.75rem;
   font-style: italic;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  h1 { font-size: 1.7rem; }
+  .card { padding: 1.2rem; }
+  .card h2 { font-size: 1.1rem; }
 }

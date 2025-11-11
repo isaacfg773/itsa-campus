@@ -9,6 +9,9 @@ import { NoticiasComponent } from './pages/noticias/noticias.component';
 import { NosotrosComponent } from './pages/nosotros/nosotros.component';
 import { ContactoComponent } from './pages/contacto/contacto.component';
 import { LoginComponent } from './pages/login/login.component';
+import { PanelComponent } from './pages/panel/panel.component';
+import { AgenteComponent } from './pages/agente/agente.component';
+import { RequisitosComponent} from './pages/requisitos/requisitos.component';
 
 // 👇 ESTE ES EL IMPORT CORRECTO (plural en carpeta y archivo)
 import { HorariosComponent } from './pages/horarios/horarios.component';
@@ -22,6 +25,9 @@ export const routes: Routes = [
   { path: 'nosotros', component: NosotrosComponent },
   { path: 'eventos', component: EventosComponent },
   { path: 'contacto', component: ContactoComponent },
+   { path: 'panel', component: PanelComponent },
+  { path: 'agente', component: AgenteComponent },
+  {path: 'requisitos', component: RequisitosComponent},
   { path: 'login', component: LoginComponent },
 
   // 👇 NUEVA RUTA (plural)
